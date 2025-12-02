@@ -57,12 +57,14 @@ Launch EC2 + RDS
 * provider.tf
 
 provider "aws" {
+
   region = "ap-south-1"
+  
 }
 
 * main.tf
 
-# SECURITY GROUP FOR EC2
+######  SECURITY GROUP FOR EC2
 
 resource "aws_security_group" "ec2_sg" {
   name        = "ec2-app-sg"
@@ -94,7 +96,7 @@ resource "aws_security_group" "ec2_sg" {
 }
 
 
-# SECURITY GROUP FOR RDS
+######  SECURITY GROUP FOR RDS
 
 resource "aws_security_group" "rds_sg" {
   name        = "rds-mysql-sg"
@@ -118,7 +120,7 @@ resource "aws_security_group" "rds_sg" {
 }
 
 
-# EC2 INSTANCE
+######  EC2 INSTANCE
 
 resource "aws_instance" "app" {
   ami           = "ami-0c2af51e265bd5e0e" # Ubuntu 22.04 (Mumbai)
@@ -134,7 +136,7 @@ resource "aws_instance" "app" {
   }
 }
 
-# RDS MYSQL DATABASE
+###### RDS MYSQL DATABASE
 
 resource "aws_db_instance" "mysql" {
   identifier             = "ecommerce-db"
